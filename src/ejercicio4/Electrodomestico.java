@@ -77,22 +77,46 @@ public class Electrodomestico {
         this.consumo = comprobarConsumoEnergetico(consumo);
     }
     
+    /**
+     * Devuelve el precio base
+     * @return precio base del electrodomestico
+     */
 	public double getPrecioBase () {
 		return this.precioBase;
 	}
 	
+	/**
+//	 * Devuelve el peso
+	 * @return peso del electrodomestico
+	 */
 	public double getPeso() {
 		return this.peso;
 	}
 	
+	/**
+	 * Devuelve el color
+	 * @return color del electrodomestico
+	 */
 	public COLOR getColor() {
 		return this.color;
 	}
 	
+	/**
+	 * Devuelve el consumo
+	 * @return consumo del electrodomestico
+	 */
 	public CONSUMO getConsumo() {
+		if(this.consumo == null) {
+			this.consumo = CONSUMO.B;
+		}
 		return this.consumo;
 	}
 	
+	/**
+	 * Comprueba que el consumo energético está dentro de los tipos de consumo establecidos y si no, le asigna la B
+	 * @param letra
+	 * @return consumo correspondiente
+	 */
 	public static CONSUMO comprobarConsumoEnergetico(char letra) {
         String consumos = "ABCDEF";
         if (!(consumos.contains(String.valueOf(letra)))) {
@@ -102,6 +126,11 @@ public class Electrodomestico {
         }
     }
 	
+	/**
+	 * Comprobamos que el color está dentro de los establecidos
+	 * @param color
+	 * @return color correspondiente
+	 */
 	public static COLOR comprobarColor (String color) {
 		COLOR res = COLOR.BLANCO;
 		if(color.equalsIgnoreCase("NEGRO")) {
@@ -154,5 +183,9 @@ public class Electrodomestico {
         return precioFinal;
     }
 
+	@Override
+	public String toString() {
+		return "Precio Base: " + this.precioBase + "€ Peso:" + this.peso + " Consumo: " + this.consumo + " Color: " + this.color + " ";
+	}
 
 }

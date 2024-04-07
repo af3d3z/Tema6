@@ -26,7 +26,7 @@ public class Television extends Electrodomestico{
 	 * @param peso
 	 */
 	public Television(double precio, double peso) {
-		super();
+		super(precio, peso);
 		this.resolucion = 20;
 		this.sintonizador = false;
 	}
@@ -41,7 +41,7 @@ public class Television extends Electrodomestico{
 	 * @param sintonizador
 	 */
 	public Television (double precioBase, double peso, String color, char consumo, int resolucion, boolean sintonizador) {
-    	super();
+    	super(precioBase, peso, color, consumo);
     	if(resolucion > 0) {
     		this.resolucion = resolucion;
     	}
@@ -49,15 +49,26 @@ public class Television extends Electrodomestico{
     	this.sintonizador = sintonizador;
     }
 
-	
+	/**
+	 * Devuelve la resolucion en pulgadas
+	 * @return resolucion
+	 */
 	public int getResolucion() {
 		return this.resolucion;
 	}
 	
+	/**
+	 * Devuelve si tiene un sintonizador o no
+	 * @return true si tiene sintonizador, de lo contrario devuelve false
+	 */
 	public boolean getSintonizador() {
 		return this.sintonizador;
 	}
 	
+	/**
+	 * Devuelve el precio final del Televisor
+	 * @return precio final del televisor
+	 */
 	public double precioFinal() {
 		double precioFinal = super.precioFinal();
 		
@@ -70,5 +81,10 @@ public class Television extends Electrodomestico{
 		}
 		
 		return precioFinal;
+	}
+	
+	@Override
+	public String toString() {
+		return "Televisión " + super.toString() + "Pulgadas: " + this.resolucion + " ¿Tiene sintonizador? " + this.sintonizador;
 	}
 }
